@@ -4,6 +4,8 @@
 
 #include "Camera.h"
 
+using namespace DirectX;
+
 Camera::Camera()
 	: mPosition(0.0f, 0.0f, 0.0f), 
 	  mRight(1.0f, 0.0f, 0.0f),

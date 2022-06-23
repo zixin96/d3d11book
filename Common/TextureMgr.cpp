@@ -6,10 +6,10 @@ TextureMgr::TextureMgr() : md3dDevice(0)
 
 TextureMgr::~TextureMgr()
 {
-	for(auto it = mTextureSRV.begin(); it != mTextureSRV.end(); ++it)
-    {
+	for (auto it = mTextureSRV.begin(); it != mTextureSRV.end(); ++it)
+	{
 		ReleaseCOM(it->second);
-    }
+	}
 
 	mTextureSRV.clear();
 }
@@ -24,17 +24,20 @@ ID3D11ShaderResourceView* TextureMgr::CreateTexture(std::wstring filename)
 	ID3D11ShaderResourceView* srv = 0;
 
 	// Does it already exist?
-	if( mTextureSRV.find(filename) != mTextureSRV.end() )
+	if (mTextureSRV.find(filename) != mTextureSRV.end())
 	{
 		srv = mTextureSRV[filename];
 	}
 	else
 	{
-		HR(D3DX11CreateShaderResourceViewFromFile(md3dDevice, filename.c_str(), 0, 0, &srv, 0 ));
+		ID3D11Resource* texResource = nullptr;
+		HR(DirectX::CreateDDSTextureFromFile(md3dDevice, filename.c_str(), &texResource, &srv));
+		ReleaseCOM(texResource); // view saves reference
+
+		// HR(D3DX11CreateShaderResourceViewFromFile(md3dDevice, filename.c_str(), 0, 0, &srv, 0 ));
 
 		mTextureSRV[filename] = srv;
 	}
 
 	return srv;
 }
- 

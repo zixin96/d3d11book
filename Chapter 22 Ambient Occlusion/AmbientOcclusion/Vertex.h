@@ -9,6 +9,8 @@
 
 #include "d3dUtil.h"
 
+using namespace DirectX;
+
 namespace Vertex
 {
 	struct AmbientOcclusion

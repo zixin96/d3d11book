@@ -18,3 +18,8 @@ HR(DirectX::CreateDDSTextureFromFile(md3dDevice, L"Textures/grass.dds", &texReso
 ReleaseCOM(texResource); // view saves reference
 ```
 
+
+
+### Note
+
+I have selectively upgraded some of the projects that I need, which you should be able to run them directly. If you need to run a particular demo that still reports errors, following the above recipe should solve the issues. 

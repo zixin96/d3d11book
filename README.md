@@ -1,6 +1,8 @@
 # d3d11book
 
+Tested on 06/23/2022.  
 
+Follow the recipe to convert the projects to the latest version runnable using Visual Studio 2022, Windows 11. 
 
 1. Remove old collision header and source from the filter (for projects that need collision, use DirectXCollision)
 2. Add `DDSTextureLoader.cpp/h` `dxerr.cpp/h`to the common filter

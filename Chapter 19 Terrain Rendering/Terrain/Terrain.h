@@ -12,6 +12,8 @@
 class Camera;
 struct DirectionalLight;
 
+using namespace DirectX;
+
 class Terrain
 {
 public:

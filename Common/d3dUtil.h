@@ -14,6 +14,7 @@
 #include "DDSTextureLoader.h"
 #include <DirectXMath.h>
 #include <DirectXPackedVector.h>
+#include <d3dcompiler.h>
 #include "dxerr.h"
 #include <cassert>
 #include <ctime>
@@ -22,6 +23,7 @@
 #include <sstream>
 #include <fstream>
 #include <vector>
+#include <wrl.h>
 #include "MathHelper.h"
 #include "LightHelper.h"
 
@@ -69,6 +71,19 @@ class d3dHelper
 public:
 
 	static ID3D11ShaderResourceView* CreateRandomTexture1DSRV(ID3D11Device* device);
+};
+
+/**
+ * \brief Utilities class that contains useful D3D helper functions
+ */
+class d3dUtil
+{
+public:
+	static Microsoft::WRL::ComPtr<ID3DBlob> CompileShader(
+		const std::wstring&     filename,
+		const D3D_SHADER_MACRO* defines,
+		const std::string&      entrypoint,
+		const std::string&      target);
 };
 
 class TextHelper
